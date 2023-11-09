@@ -13,7 +13,4 @@ jobs:
     - name: copy file via ssh password
       run: |
             chmod 400 pw.pem
-    
-    - name: copy file via ssh password
-      run: scp -i pw.pem package.json ubuntu@3.111.41.168:/home/ubuntu
-      
+            scp -i pw.pem package.json ubuntu@3.111.41.168:/home/ubuntu
