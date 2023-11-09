@@ -10,8 +10,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: copy file via ssh password
-      run: |
-            ls
-            chmod 400 pw.pem
-            scp -i pw.pem package.json ubuntu@3.111.41.168:/home/ubuntu
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH2 }}
+        source: "package.json"
+        target: /home/ubuntu
