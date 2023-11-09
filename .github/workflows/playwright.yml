@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
+    - name: copy file via ssh password
+      run: echo ${{ secrets.SSH2 }} >> pw.pem
     
     - name: copy file via ssh password
-      run: scp -i ${{ secrets.SSH2 }} package.json ubuntu@3.111.41.168:/home/ubuntu
+      run: scp -i pw.pem package.json ubuntu@3.111.41.168:/home/ubuntu
       
